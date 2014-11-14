@@ -26,7 +26,7 @@ foreach($xml->monitor as $monitor) {
 			
 		echo "<b>Date & Time: </b>" . $logs['datetime'] . "<br />";	
 	}
-	echo "<b>Server Status: </b><a href='/second_project/index.php'>Go Back</a><br /><br />";
+	echo "<b>Server Status: </b><a href='./index.php'>Go Back</a><br /><br />";
 }
 /*XML Parsing - Monitor - End*/
 ?>
