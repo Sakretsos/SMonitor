@@ -1,0 +1,28 @@
+.graph {
+	float:left;
+	margin-top:10px;
+	background-color:#cecece;
+	position:relative;
+	width:280px;
+	padding:0
+}
+
+.graph .bar {
+	display:block;
+	position:relative;
+	background-image:url(../_images/bargraph.gif);
+	background-position:right center;
+	background-repeat:repeat-x;
+	border-right:#538e02 1px solid;
+	text-align:center;
+	color:#fff;
+	height:25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:1.9em
+}
+
+.graph .bar span {
+	position:fixed;
+	left:1em
+}
