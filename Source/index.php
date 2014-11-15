@@ -1,3 +1,11 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SMonitor - Official Widget</title>
+<link href="_css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
 <?php
 /*Variables - Start*/
 require_once("_includes/config.php");
@@ -10,7 +18,7 @@ require_once("_includes/curl_seasson.php");
 /*XML Parsing - Monitor - Start*/
 $xml = simplexml_load_string($responseXML);
 
-if(!_is_curl_installed()) {
+if(!is_curl_installed()) {
 	echo "cURL is not installed on server !.";
 	
 } else {
@@ -38,22 +46,46 @@ if(!_is_curl_installed()) {
 			
 			$customuptime = $monitor['customuptimeratio'];
 			list($day, $week, $month) = split('[-]', $customuptime);
+							
+			echo "<br /><b> Uptime Ratio ( Day ): </b><br />";
+			echo "<div class='graph'><strong class='bar' style='width:" . $day . "%;'>" . $day . "%</strong></div><br />";
 			
-			echo "<br /><b> Uptime Ratio ( Day ): </b>" . $day . " %<br />";
-			echo "<b>Uptime Ratio ( Weekly ): </b>" . $week . " %<br />";
-			echo "<b>Uptime Ratio ( Monthly ): </b>" . $month . " %<br />";
+			echo "<br /><b>Uptime Ratio ( Weekly ): </b><br />";
+			echo "<div class='graph'><strong class='bar' style='width:" . $week . "%;'>" . $week . "%</strong></div><br />";
 			
-			echo "<b>Uptime Ratio ( Since Created ): </b>" . $monitor['alltimeuptimeratio'] . " %<br />";
-			echo "<b>Monitor Type: </b>";
+			echo "<br /><b>Uptime Ratio ( Monthly ): </b><br />";
+			echo "<div class='graph'><strong class='bar' style='width:" . $month . "%;'>" . $month . "%</strong></div><br />";
+			
+			echo "<br /><b>Uptime Ratio ( Since Created ): </b><br />";
+			echo "<div class='graph'><strong class='bar' style='width:" . $monitor['alltimeuptimeratio'] . "%;'>" . $monitor['alltimeuptimeratio'] . "%</strong></div><br />";
+			
+			echo "<br /><b>Monitor Type: </b>";
 			
 			if($monitor['type'] == 1)
 				echo 'Https';
 			else if($monitor['type'] == 2)
 				echo 'Keyword';
-			else if ($monitor['type'] == 3)
+			else if($monitor['type'] == 3)
 				echo 'Ping';
-			else if ($monitor['type'] == 4)
-				echo 'Port';
+			else if($monitor['type'] == 4)
+			{
+				echo 'Port - ';
+				
+				if($monitor['subtype'] == 1)
+					echo 'Http (80)';
+				else if($monitor['subtype'] == 2)
+					echo 'Https (443)';
+				else if($monitor['subtype'] == 3)
+					echo 'FTP (21)';
+				else if($monitor['subtype'] == 4)
+					echo 'SMTP (25)';
+				else if($monitor['subtype'] == 5)
+					echo 'POP3 (110)';
+				else if($monitor['subtype'] == 6)
+					echo 'IMAP (143)';
+				else if($monitor['subtype'] == 99)
+					echo 'Custom Port ( ' . $monitor['port'] . ' )';
+			}
 			
 			echo "<br /><b>Monitor Reports: </b><a href='monitor_report.php'>Click Me</a><br /><br />";
 			
@@ -76,3 +108,5 @@ if(!_is_curl_installed()) {
 	}
 }
 ?>
+</body>
+</html>
