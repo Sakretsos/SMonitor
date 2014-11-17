@@ -6,16 +6,18 @@
 <link href="_css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<script type="text/javascript" src="_scripts/update_data.js"></script>
 <?php
 /*Variables - Start*/
 require_once("_includes/config.php");
 /*Variables - End*/
 
 /*Curl Request - Start*/
-require_once("_includes/curl_seasson.php");
+require_once("_includes/curl.php");
 /*Curl Request - End*/
  
 /*XML Parsing - Monitor - Start*/
+$responseXML = curl_seasson($url);
 $xml = simplexml_load_string($responseXML);
 
 if(!is_curl_installed()) {
@@ -103,8 +105,10 @@ if(!is_curl_installed()) {
 			}*/
 		}
 		/*XML Parsing - Monitor - End*/
-		$nextUpdate = time() + ( 5 * 60);
-		echo "<b>Next Status Update: </b>" . date('H:i:s', $nextUpdate);
+		
+		/*Javascript Update Data - Start*/
+		echo "<div id='update_data'></div>";
+		/*Javascript Update Data - End*/
 	}
 }
 ?>

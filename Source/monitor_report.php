@@ -4,10 +4,11 @@ require_once("_includes/config.php");
 /*Variables - End*/
 
 /*Curl Request - Start*/
-require_once("_includes/curl_seasson.php");
+require_once("_includes/curl.php");
 /*Curl Request - End*/
  
 /*XML Parsing - Monitor - Start*/
+$responseXML = curl_seasson($url);
 $xml = simplexml_load_string($responseXML);
  
 foreach($xml->monitor as $monitor) {

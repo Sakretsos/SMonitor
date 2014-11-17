@@ -9,9 +9,13 @@ function is_curl_installed() {
 }
 /*Check Curl if Installed - End*/
 /*Curl Request - Start*/
-$c = curl_init($url);
-curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-$responseXML = curl_exec($c);
-curl_close($c);
+function curl_seasson($url) {
+	$c = curl_init($url);
+	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+	$responseXML = curl_exec($c);
+	curl_close($c);
+	
+	return $responseXML;
+}
 /*Curl Request - End*/
 ?>
