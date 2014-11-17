@@ -1,28 +1,93 @@
-.graph {
-	float:left;
-	margin-top:10px;
-	background-color:#cecece;
-	position:relative;
-	width:280px;
-	padding:0
+body {
+    background-color: #d3d3d3;
 }
 
-.graph .bar {
-	display:block;
-	position:relative;
-	background-image:url(../_images/bargraph.gif);
-	background-position:right center;
-	background-repeat:repeat-x;
-	border-right:#538e02 1px solid;
-	text-align:center;
-	color:#fff;
-	height:25px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	line-height:1.9em
+.header {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 250px;
+	width: 1050px;
+	background-image: url(../_images/header.png);
+	background-repeat: no-repeat;
 }
 
-.graph .bar span {
-	position:fixed;
-	left:1em
+.servers_bg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 187px;
+	width: 1032px;
+	background-image: url(../_images/serverbg.png);
+	background-repeat: no-repeat;
+}
+
+#left_information {
+	padding: 15px 0 0 20px;
+	text-align: left;
+}
+
+.graphics_24h {
+    position: relative;
+	left: 413px;
+	width: 105px;
+	bottom: 144px;
+	max-height:100px;
+	background-image: url(../_images/bar.png);
+	background-repeat: repeat-y;
+	background-position: center;
+	line-height: 6cm;
+	text-align: center;
+}
+
+.graphics_weekly {
+    position: relative;
+	left: 525px;
+	width: 105px;
+	bottom: 260px;
+	max-height:100px;
+	background-image: url(../_images/barorange.png);
+	background-repeat: repeat-y;
+	background-position: center;
+	line-height: 6cm;
+	text-align: center;
+}
+
+.graphics_monthly {
+    position: relative;
+	left: 637px;
+	width: 105px;
+	bottom: 376px;
+	max-height:100px;
+	background-image: url(../_images/bar.png);
+	background-repeat: repeat-y;
+	background-position: center;
+	line-height: 6cm;
+	text-align: center;
+}
+
+.graphics_yearly {
+    position: relative;
+	left: 749px;
+	width: 105px;
+	bottom: 492px;
+	max-height:100px;
+	background-image: url(../_images/barorange.png);
+	background-repeat: repeat-y;
+	background-position: center;
+	line-height: 6cm;
+	text-align: center;
+}
+
+.graphics_total {
+	position: relative;
+	left: 861px;
+	width: 105px;
+	bottom: 608px;
+	max-height:100px;
+	background-image: url(../_images/bar.png);
+	background-repeat: repeat-y;
+	background-position: center;
+	line-height: 6cm;
+	text-align: center;
 }

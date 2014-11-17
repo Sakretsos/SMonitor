@@ -1,6 +1,6 @@
-SMonitor
-========
-Server Monitor Script For Uptime Robot - Demo: http://lolsmurf.eu/second_project
+SMonitor - v2.0
+===============
+Server Monitor Script For Uptime Robot - Demo: http://lolsmurf.eu/smonitor_new/
 
 Widget Monitor Developers: 
 * PHP Coded By Sakretsos
