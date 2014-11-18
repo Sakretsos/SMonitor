@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>SMonitor - Official Widget</title>
+<link href="_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="_css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -30,9 +31,10 @@ if(!is_curl_installed()) {
 
 	} else {
 		foreach($xml->monitor as $monitor) {
-			echo "<div class='servers_bg'><p id='left_information'><b>Website Name: </b>" . $monitor['friendlyname'] . "<br />";
-			echo "<b>Website URL / IP: </b>" . $monitor['url'] . "<br />";
-			echo "<b>Monitor Type: </b>"; 
+			echo "<div class='servers_bg'>
+			<p>Website Name: " . $monitor['friendlyname'] . "<br />" .
+			"Website URL / IP: " . $monitor['url'] . "<br />" .
+			"Monitor Type: "; 
 			
 			if($monitor['type'] == 1)
 				echo 'Http(s)';
@@ -73,12 +75,24 @@ if(!is_curl_installed()) {
 			
 			$customuptime = $monitor['customuptimeratio'];
 			list($day, $week, $month, $year) = split('[-]', $customuptime);
-							
-			echo "<p class='graphics_24h' style='height:" . $day . "%;'>" . $day . " %";
-			echo "<p class='graphics_weekly' style='height:" . $week . "%;'>" . $week . " %";
-			echo "<p class='graphics_monthly' style='height:" . $month . "%;'>" . $month . " %";
-			echo "<p class='graphics_yearly' style='height:" . $year . "%;'>" . $year . " %";
-			echo "<p class='graphics_total' style='height:" . $monitor['alltimeuptimeratio'] . "%;'>" . $monitor['alltimeuptimeratio'] . " %</p></div>";
+			
+			echo "<ul class='new_graphics'>
+					<li>
+						<span style='height:" . $day . "%' title='" . $day . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $week . "%' title='" . $week . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $month . "%' title='" . $month . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $year . "%' title='" . $year . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $monitor['alltimeuptimeratio'] . "%' title='" . $monitor['alltimeuptimeratio'] . " %'></span>
+					</li>
+				</ul></p></div>";
 		}
 		/*XML Parsing - Monitor - End*/
 		

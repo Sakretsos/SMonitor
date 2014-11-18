@@ -7,7 +7,7 @@ setInterval(function () {
 	// let's say 01:30, then current seconds is 90, 90%300 = 90, then 300-90 = 210. That's the time left!
     var timeleft = fiveMin - seconds % fiveMin;
 	//formart seconds into 00:00 
-    var result ='<b>Next Status Update: </b>' + parseInt(timeleft / 60) + ':' + timeleft % 60;
+    var result ='Next Status Update: ' + parseInt(timeleft / 60) + ':' + timeleft % 60;
 	
     document.getElementById('update_data').innerHTML = result;
 
