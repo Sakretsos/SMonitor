@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 <title>SMonitor - Official Widget</title>
+<link href="_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="_css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <script type="text/javascript" src="_scripts/update_data.js"></script>
+<div class='header'></div>
 <?php
 /*Variables - Start*/
 require_once("_includes/config.php");
@@ -29,42 +31,13 @@ if(!is_curl_installed()) {
 
 	} else {
 		foreach($xml->monitor as $monitor) {
-			echo "<b>Website Name: </b>" . $monitor['friendlyname'] . "<br />";
-			echo "<b>Website URL / IP: </b>" . $monitor['url'] . "<br />";
-			
-			echo "<b>Status: </b>";
-			
-			if ($monitor['status'] == 0)
-				echo '<b><font color="brown">Monitor Paused</font></b>';
-				
-			else if($monitor['status'] == 2)
-				echo '<b><font color="green">Online</font></b>';
-				
-			else if ($monitor['status'] == 8)
-				echo '<b><font color="red">Seems Down</font></b>';
-				
-			else if ($monitor['status'] == 9)
-				echo '<b><font color="red">Down</font></b>';
-			
-			$customuptime = $monitor['customuptimeratio'];
-			list($day, $week, $month) = split('[-]', $customuptime);
-							
-			echo "<br /><b> Uptime Ratio ( Day ): </b><br />";
-			echo "<div class='graph'><strong class='bar' style='width:" . $day . "%;'>" . $day . "%</strong></div><br />";
-			
-			echo "<br /><b>Uptime Ratio ( Weekly ): </b><br />";
-			echo "<div class='graph'><strong class='bar' style='width:" . $week . "%;'>" . $week . "%</strong></div><br />";
-			
-			echo "<br /><b>Uptime Ratio ( Monthly ): </b><br />";
-			echo "<div class='graph'><strong class='bar' style='width:" . $month . "%;'>" . $month . "%</strong></div><br />";
-			
-			echo "<br /><b>Uptime Ratio ( Since Created ): </b><br />";
-			echo "<div class='graph'><strong class='bar' style='width:" . $monitor['alltimeuptimeratio'] . "%;'>" . $monitor['alltimeuptimeratio'] . "%</strong></div><br />";
-			
-			echo "<br /><b>Monitor Type: </b>";
+			echo "<div class='servers_bg'>
+			<p>Website Name: " . $monitor['friendlyname'] . "<br />" .
+			"Website URL / IP: " . $monitor['url'] . "<br />" .
+			"Monitor Type: "; 
 			
 			if($monitor['type'] == 1)
-				echo 'Https';
+				echo 'Http(s)';
 			else if($monitor['type'] == 2)
 				echo 'Keyword';
 			else if($monitor['type'] == 3)
@@ -89,25 +62,42 @@ if(!is_curl_installed()) {
 					echo 'Custom Port ( ' . $monitor['port'] . ' )';
 			}
 			
-			echo "<br /><b>Monitor Reports: </b><a href='monitor_report.php'>Click Me</a><br /><br />";
+			echo "<br /><br />";
 			
-			/*foreach($monitor->log as $logs) {
-				if($logs['type'] == 1)
-					echo '<font color="red">Server Down </font>';
-				else if($logs['type'] == 2)
-					echo '<font color="green">Server Up </font>';
-				else if($logs['type'] == 98)
-					echo '<font color="blue">Monitor Started </font>';
-				else if($logs['type'] == 99)
-					echo '<font color="brown">Monitor Paused </font>';
-					
-				echo "<b>Date & Time: </b>" . $logs['datetime'] . "<br />";
-			}*/
+			if ($monitor['status'] == 0)
+				echo "<img src='_images/paused.png' width='108' height='82'>";
+				
+			else if($monitor['status'] == 2)
+				echo "<img src='_images/on.png' width='108' height='82'>";
+				
+			else if ($monitor['status'] == 9)
+				echo "<img src='_images/off.png' width='108' height='82'>";
+			
+			$customuptime = $monitor['customuptimeratio'];
+			list($day, $week, $month, $year) = split('[-]', $customuptime);
+			
+			echo "<ul class='new_graphics'>
+					<li>
+						<span style='height:" . $day . "%' title='" . $day . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $week . "%' title='" . $week . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $month . "%' title='" . $month . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $year . "%' title='" . $year . " %'></span>
+					</li>
+					<li>
+						<span style='height:" . $monitor['alltimeuptimeratio'] . "%' title='" . $monitor['alltimeuptimeratio'] . " %'></span>
+					</li>
+				</ul></p></div>";
 		}
 		/*XML Parsing - Monitor - End*/
 		
 		/*Javascript Update Data - Start*/
-		echo "<div id='update_data'></div>";
+		echo "<center><div id='update_data'></div></center>";
 		/*Javascript Update Data - End*/
 	}
 }
