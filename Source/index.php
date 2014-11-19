@@ -24,11 +24,13 @@ $responseXML = curl_seasson($url);
 $xml = simplexml_load_string($responseXML);
 
 if(!is_curl_installed()) {
-	echo "cURL is not installed on server !.";
+	echo "<div class='error_api'><p>cURL is not installed on server !.</p></div>";
+	echo "<div class='footer'><p id='update_data'></p></div>";
 	
 } else {
 	if($xml->attributes()->id == 101 || $xml->attributes()->id == 100) {
-		echo $xml->attributes()->message;
+		echo "<div class='error_api'><p>" . $xml->attributes()->message . "</p></div>";
+		echo "<div class='footer'><p id='update_data'></p></div>";
 
 	} else {
 		foreach($xml->monitor as $monitor) {

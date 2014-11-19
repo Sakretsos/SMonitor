@@ -10,9 +10,25 @@ body {
 .header {
 	margin: auto;
 	height: 250px;
-	width: 1050px;
+	width: 1032px;
 	background-image: url(../_images/header.png);
 	background-repeat: no-repeat;
+}
+
+.error_api {
+	margin: auto;
+	height: 187px;
+	width: 1032px;
+	background-repeat: no-repeat;
+	background-image: url(../_images/warning_page.png);
+}
+
+.error_api p {
+	padding-top: 70px;
+	text-align: center;
+	font-family: 'Franks';
+	font-size: 250%;
+	font-weight: bold;
 }
 
 .servers_bg {
