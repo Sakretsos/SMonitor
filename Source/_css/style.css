@@ -2,6 +2,11 @@ body {
 	background-color: #d3d3d3;
 }
 
+@font-face {
+    font-family: 'Franks';
+    src: url(../_fonts/Franks-Regular.ttf);
+}
+
 .header {
 	margin: auto;
 	height: 250px;
@@ -20,8 +25,25 @@ body {
 
 .servers_bg p {
 	float: left;
-	padding-left: 20px;
-	padding-top: 20px;
+	padding-left: 15px;
+	padding-top: 15px;
+	font-family: 'Franks';
+	font-size: 115%;
+}
+
+.footer {
+	margin: auto;
+	height: 46px;
+	width: 1032px;
+	background-image: url(../_images/footer.png);
+	background-repeat: no-repeat;
+}
+
+.footer p {
+	padding-top: 13px;
+	padding-left: 55px;
+	font-family: 'Franks';
+	font-size: 105%;
 }
 
 .new_graphics {
@@ -46,8 +68,9 @@ body {
 .new_graphics span {
 	margin: 0 1em;
 	display: block;
-	background-image: url(http://lolsmurf.eu/smonitor_new/_images/bar.png);
-	animation: draw 1s ease-in-out;
+	background-image: url(../_images/bar.png);
+	-webkit-animation: draw 2s ease-in-out;
+	animation: draw 2s ease-in-out;
 }
 
 .new_graphics span:before {
@@ -60,6 +83,13 @@ body {
 	text-align: center;
 	content: attr(title);
 	word-wrap: break-word;
+	font-family: 'Franks';
+}
+
+@-webkit-keyframes draw {
+	0% {
+		height: 0;
+	}
 }
 
 @keyframes draw {

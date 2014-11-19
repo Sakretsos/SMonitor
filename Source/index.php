@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>SMonitor - Official Widget</title>
+<link href="_images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="_css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -96,9 +97,9 @@ if(!is_curl_installed()) {
 		}
 		/*XML Parsing - Monitor - End*/
 		
-		/*Javascript Update Data - Start*/
-		echo "<center><div id='update_data'></div></center>";
-		/*Javascript Update Data - End*/
+		/*Javascript - Update Data / Footer - Start*/
+		echo "<div class='footer'><p id='update_data'></p></div>";
+		/*Javascript Update Data / Footer - End*/
 	}
 }
 ?>
